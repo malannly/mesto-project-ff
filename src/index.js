@@ -1,9 +1,22 @@
 import './pages/index.css';
 import { openModal, closeModal, addPopupListeners } from './components/modal.js';
-import { createCard, deleteCard, handleLikeClick, handleImageClick } from './components/card.js';
+import { createCard, deleteCard, handleLikeClick } from './components/card.js';
 import { initialCards } from './scripts/cards.js';
 
 const placesList = document.querySelector('.places__list');
+
+// Обработчик клика по изображению 
+const handleImageClick = (name, link) => { 
+    const cardFullImage = document.querySelector('.popup__image'); 
+    const cardFullCaption = document.querySelector('.popup__caption'); 
+
+    cardFullImage.src = link; 
+    cardFullImage.alt = name; 
+    cardFullCaption.textContent = name; 
+
+    const imagePopup = document.querySelector('.popup_type_image');
+    openModal(imagePopup);
+};
 
 // Выводим карточки на страницу
 initialCards.forEach((element) => {
@@ -18,11 +31,6 @@ const imagePopup = document.querySelector(".popup_type_image");
 addPopupListeners(profilePopup);
 addPopupListeners(addCardPopup);
 addPopupListeners(imagePopup);
-
-const buttonProfilePopup = document.querySelector(".profile__edit-button");
-if (buttonProfilePopup) {
-    buttonProfilePopup.addEventListener("click", () => openModal(profilePopup));
-}
 
 const buttonProfileAddImage = document.querySelector(".profile__add-button");
 if (buttonProfileAddImage) {
