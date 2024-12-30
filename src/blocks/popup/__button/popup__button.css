@@ -25,3 +25,25 @@
     line-height: 17px;
   }
 }
+
+.popup__button_disabled {
+  background-color: transparent;
+  border: 2px solid rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.popup__button_disabled:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.like__counter {
+  color: rgb(0, 0, 0);
+  width: 10px;
+  height: 13px;
+  margin: auto;
+  padding: 0;
+}

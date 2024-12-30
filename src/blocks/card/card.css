@@ -13,3 +13,13 @@
   position: relative;
   overflow: hidden;
 }
+
+.button__con {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__like-counter {
+  margin: auto;
+  padding: 0;
+}
