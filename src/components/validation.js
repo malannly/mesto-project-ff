@@ -1,7 +1,3 @@
-//DOM elements
-const formElement = document.querySelector('.popup__form'); 
-const inputElement = formElement.querySelector('.popup__input');
-
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(settings.inputErrorClass); 
@@ -16,26 +12,11 @@ const hideInputError = (formElement, inputElement, settings) => {
   errorElement.textContent = '';
 };
 
-const isValid = (formElement, inputElement, settings) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
+function checkInputValidity(formElement, inputElement, settings) {
+  if (inputElement.validity.patternMismatch && inputElement.dataset.errorMessage) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage);
   } else {
-    hideInputError(formElement, inputElement, settings);
-  }
-};
-
-const checkInputValidity = (formElement, inputElement, settings) => {
-  if (inputElement.value === '') {
-    showInputError(formElement, inputElement, "Заполните это поле", settings);
-    return;
-  }
-
-  if (inputElement.type === 'text') {
-    const validationProfile = /^[A-Za-zА-Яа-яЁё\s-]+$/;
-    if (!validationProfile.test(inputElement.value)) {
-      showInputError(formElement, inputElement, "Разрешены только буквы, дефисы и пробелы", settings);
-      return;
-    }
+    inputElement.setCustomValidity("");
   }
 
   if (!inputElement.validity.valid) {
@@ -43,7 +24,7 @@ const checkInputValidity = (formElement, inputElement, settings) => {
   } else {
     hideInputError(formElement, inputElement, settings);
   }
-};
+}
 
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   const hasInvalidInput = inputList.some((inputElement) => {

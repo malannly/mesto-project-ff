@@ -55,22 +55,13 @@ export const deleteCard = (cardId, cardElement) => {
 export const handleLikeClick = function (cardId, likeButton, likeCountElement) { 
     const isLiked = likeButton.classList.contains('card__like-button_is-active');
 
-    let likeRequest;
-
-    if (isLiked) {
-      
-        likeRequest = deleteLike(cardId);
-    } else {
-     
-        likeRequest = addLike(cardId);
-    }
-
-    likeRequest
-        .then((updatedCard) => {
-            likeCountElement.textContent = updatedCard.likes.length;
-            likeButton.classList.toggle('card__like-button_is-active');
-        })
-        .catch((err) => {
-            console.error(`Ошибка: ${err}`);
-        });
+    const likeMethod = isLiked ? deleteLike : addLike;
+    likeMethod(cardId)
+    .then((updatedCard) => { 
+                likeCountElement.textContent = updatedCard.likes.length; 
+                likeButton.classList.toggle('card__like-button_is-active'); 
+            }) 
+            .catch((err) => { 
+                console.error(`Ошибка: ${err}`);
+            });
 };

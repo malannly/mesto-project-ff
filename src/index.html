@@ -53,12 +53,14 @@
       <form class="popup__form" name="edit-profile" validity>
         <input type="text" name="name" class="popup__input popup__input_type_name"
          placeholder="Имя" autocomplete="off" minlength="2" maxlength="40"
-         pattern="[A-Za-zА-Яа-яЁё\s\-]+" id="name-input" required>
+         pattern="[A-Za-zА-Яа-яЁё\s\-]+" id="name-input" 
+         data-error-message="Разрешены только буквы, дефисы и пробелы"  required>
         <span class="popup__input-error name-input-error" ></span>
         <input type="text" name="description" 
         class="popup__input popup__input_type_description" id="description-input"
         autocomplete="off"  placeholder="Занятие" minlength="2"
-        pattern="[A-Za-zА-Яа-яЁё\s\-]+" maxlength="200" required>
+        pattern="[A-Za-zА-Яа-яЁё\s\-]+" maxlength="200" 
+        data-error-message="Разрешены только буквы, дефисы и пробелы"  required>
         <span class="popup__input-error description-input-error" ></span>
         <button type="submit" class="button popup__button">Сохранить</button>
       </form>
@@ -69,8 +71,10 @@
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="new-place">
-        <input type="text" pattern="[A-Za-zА-Яа-яЁё\s\-]+" name="place-name" class="popup__input popup__input_type_card-name"
-        id="place-name-input" placeholder="Название"  required>
+        <input type="text" pattern="[A-Za-zА-Яа-яЁё\s\-]+" name="place-name"
+         class="popup__input popup__input_type_card-name"
+        id="place-name-input" 
+        data-error-message="Разрешены только буквы, дефисы и пробелы"  placeholder="Название"  required>
         <span class="popup__input-error place-name-input-error"></span>
         <input type="url" name="link" class="popup__input popup__input_type_url"
         id="link-input" placeholder="Ссылка на картинку" required>

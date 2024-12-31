@@ -39,10 +39,7 @@ export const profileEdit = (userInfo) => {
     return fetch(`${config.baseUrl}/users/me`, {
        method: 'PATCH',
        headers: config.headers,
-       body: JSON.stringify({
-         name: userInfo.name,
-         about: userInfo.about,
-       }),
+       body: JSON.stringify(userInfo),
      })
      .then(checkServer);
 };
